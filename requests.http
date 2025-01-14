@@ -1,0 +1,63 @@
+//REST Client
+
+
+POST http://localhost:3000/register
+Content-Type: application/json
+
+{
+    "name": "John Doe",
+    "email": "john.doe@example.com",
+    "password": "password123"
+}
+
+###
+//*** Login ***//
+
+# @name login
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+    "email": "john.doe@example.com",
+    "password": "password123"
+}
+###
+@authToken = {{login.response.body.token}}
+
+###
+
+//*** Get User ***//
+# @name getUser
+GET http://localhost:3000/users
+Authorization: Bearer {{authToken}}
+
+###
+
+//*** Get Posts ***//
+
+# @name getPosts
+GET http://localhost:3000/posts
+Authorization: Bearer {{authToken}}
+
+###
+
+//*** Get comments ***//
+
+# @name getComments
+GET http://localhost:3000/comments
+Authorization: Bearer {{authToken}}
+
+###
+
+//*** Create Comments ***//
+
+# @name createComment
+POST http://localhost:3000/comments
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+    "text": "Teste De incluir comentario",
+    "postId": "2"
+  }
+

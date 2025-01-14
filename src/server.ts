@@ -17,15 +17,15 @@ server.post('/login', loginController)
 
 server.use(authMiddleware)
 
-server.use('/users', (req, res, next) => {
-	if (req.method !== 'GET') {
-		return res.status(404).json({
-			message: 'not found route.'
-		})
-	}
+// server.use('/users', (req, res, next) => {
+// 	if (req.method !== 'GET') {
+// 		return res.status(404).json({
+// 			message: 'not found route.'
+// 		})
+// 	}
 
-	next()
-})
+// 	next()
+// })
 
 server.use(router)
 
